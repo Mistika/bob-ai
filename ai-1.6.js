@@ -149,7 +149,13 @@ function command(o_msg, e){
 		}, e.threadID);
 		return false;
 	}
-
+	
+	if(msg_b.match(/ change color|color|color | color| color /i)){
+		
+		api.changeThreadColor("#5467ff", "0000000000000", function callback(err) {
+			if(err) return console.error(err);
+			});
+			
 	// How many times he's heard a word
 
 	if(o_msg.match(/how many times/i)){
