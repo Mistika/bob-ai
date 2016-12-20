@@ -17,6 +17,8 @@ var api_g;
 /*
 	messageIn() is called when a message is recieved
 	It submits the sentences to learnWords, then decides weather or not to respond and returns either the response or false
+	
+	To make it scan we can just change this one to read the entire chat instead of just an incoming message
 */
 
 function messageIn(e){
@@ -60,7 +62,7 @@ function messageOut(o_msg, e){
 	then checks if it's a command, and if both of those return false
 	it generates a response.
 */
-
+/*
 var known = [
 	[["Hi", "hi", "hello", "Hello"],								["Hi", "Hello"]],
 	[["Hey", "hey"],												["Hey", "Sup", "What's up?"]],
@@ -73,7 +75,7 @@ var known = [
 	Checks for known responses. This should be used vary rarely because
 	ideally the generator would make messages like this.
 */
-
+/*
 function knowResponses(msg){
 	msg = msg.replace(/[\.\?!,']/g, "");
 	msg = msg.replace(/bob| bob|bob | bob |/gi, "");
@@ -83,7 +85,7 @@ function knowResponses(msg){
 	}
 	return false;
 }
-
+*/
 /*
 	Commands are useful and awesome. The general syntax is "bob {command} {arguments}".
 	Some commands might be something like "How many words do you know?"
@@ -156,7 +158,7 @@ function command(o_msg, e){
 	if(msg_b.match(/what time|the time|what day|what year|what month/i))
 		return (new Date());
 
-	// How many days until a holiday
+/*	// How many days until a holiday
 
 	if(msg_b.match(/how many days|days until|how long|long til|long until|when is/i)){
 		var holidays = {
@@ -177,7 +179,7 @@ function command(o_msg, e){
 			return "There are " + (holidays[query] - day + 1) + " days until " + query;
 		}
 	}
-
+*/
 	// How many times he's heard a word
 
 	if(o_msg.match(/how many times/i)){
@@ -258,6 +260,10 @@ function command(o_msg, e){
 
 	return false;
 }
+/*
+	End Functions
+*/
+  	
 
 /*
 	Decides weather or not to respond.
@@ -559,7 +565,7 @@ updateCurrency();
 function swearFilter(str){
 	if(typeof str != String)
 		str = str.toString();
-	return str.replace(/fuck|shit|damn|porn|dick|ass|slut|cunt/ig, "****");
+	return str.replace(/fuck|shit|damn|porn|dick|ass|slut|bitch|cunt/ig, "****");
 }
 
 /*
